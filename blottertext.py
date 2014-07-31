@@ -23,9 +23,9 @@ def line_Parse(xline, str):
 					iNumber = xline[1]
 					outfile.write('Incident Number:%s\n' % iNumber)
 				except IndexError:
-					iNumber = ''.join(x for x in line if x.isdigit())
+					iNumber = ''.join(x for x in xline if x.isdigit())
 					outfile.write('Incident Number:%s\n' % iNumber)
-					print ("Danger Will Robinson!")					
+#					print ("Danger Will Robinson!")					
 				break	
 
 
@@ -58,24 +58,4 @@ with open("test.txt", 'w') as outfile:
 			#outfile.write('%s\n' % line)
 			line_Parse(line, 'ARREST')
 			line_Parse(line, 'OFFENSE 2.0')
-'''			
 
-			elif "OFFENSE 2.0" in line:
-				Title = "OFFENSE 2.0:"
-				line = line.replace("OFFENSE 2.0", '')
-				iTime = line[:6]
-				line = line[6:]
-				for n in Neighborhood:
-					if n in line:
-						iNeighborhood = n
-						NeighborhoodStart = line.find(n)
-						iAddress = line[:(NeighborhoodStart)]
-						line = line[(NeighborhoodStart + len(n)):]
-						iNumber = ''.join(x for x in line if x.isdigit())
-						outfile.write('%s\n' % Title)
-						outfile.write('Time:%s\n' % iTime)
-						outfile.write('Neighborhood:%s\n' % iNeighborhood)
-						outfile.write('Address:%s\n' % iAddress)
-						outfile.write('Incident Number:%s\n' % iNumber)
-						break
-'''
