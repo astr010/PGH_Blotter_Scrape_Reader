@@ -33,6 +33,8 @@ with open('wednesday20140723.txt') as file:
 	blotterString = file.read()
 	blotterList = blotterString.split('\n')
 	incidentDate = blotterList[2]
+
+Buzz = ["ARREST", "OFFENSE 2.0"]
 	
 OddsnEnds = [ incidentDate, "PITTSBURGH BUREAU OF POLICE", "Incident Blotter", "Sorted by:", "DISCLAIMER:", "assumes", "Zone", "Report Name", "Section Description", "(hotels and restaurants)", "waters", "Abuse of emergency 911", "Tip Marker, or Similar)", "feet", "Enhanced", "permission of non-city own property", "Incident Date"]
 
@@ -55,7 +57,8 @@ with open("test.txt", 'w') as outfile:
 	outfile.write('%s\n' % incidentDate)
 	for line in blotterList:
 		if not any([o in line for o in OddsnEnds]):
-			#outfile.write('%s\n' % line)
+			if not any ([b in line for b in Buzz]):
+				outfile.write('%s\n' % line)
 			line_Parse(line, 'ARREST')
 			line_Parse(line, 'OFFENSE 2.0')
 
